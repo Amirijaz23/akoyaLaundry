@@ -10,11 +10,7 @@ import { MdSupportAgent } from "react-icons/md";
 
 const ServiceJourney = () => {
     const processCards = [
-        {
-            Icon: FaTshirt,
-            Heading: "1. Select Wash Type",
-            description: "Standard or Express wash options to suit your needs",
-        },
+        { Icon: FaTshirt, Heading: "1. Select Wash Type", description: "Standard or Express wash options to suit your needs", },
         {
             Icon: LuPackageOpen,
             Heading: "2. Choose Garments",
