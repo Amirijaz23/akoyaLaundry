@@ -35,7 +35,7 @@ const Exclusive = () => {
           {
             profile.language == "eng" ?
              Eng_bullets.map((item, index) => (
-                <div data-aos="fade-right" key={index} className='flex items-center gap-4 my-4'>
+                <div  key={index} className='flex items-center gap-4 my-4'>
                   <FaCheck className='text-[#D4B03D]' />
                   <p>{item}</p>
                 </div>))
