@@ -58,10 +58,10 @@ const Touch = () => {
                 </div>
             </div>
 
-            <div className='w-[90%] lg:w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 '>
+            <div data-aos="fade-up" className='w-[90%] lg:w-[85%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  gap-8 '>
                 {
                     PackagingOptions.map((item, index) => (
-                        <div data-aos="fade-up" key={index} className={`border shadow-md shadow-gray-200 hover:shadow-gray-300 hover:scale-[1.03] rounded-2xl  transition-all  duration-300 ease-in-out relative ${selectedCard == index ? "border-4 border-[#D4AF37] scale-[1.04]" : "border-gray-300"}`} onClick={() => SetSelectedCard(index)}>
+                        <div  key={index} className={`border shadow-md shadow-gray-200 hover:shadow-gray-300 hover:scale-[1.03] rounded-2xl  transition-all  duration-300 ease-in-out relative ${selectedCard == index ? "border-4 border-[#D4AF37] scale-[1.04]" : "border-gray-300"}`} onClick={() => SetSelectedCard(index)}>
                             <div className='bg-linear-to-b from-gray-100 via-gray-300 to-gray-600  h-90 rounded-t-2xl  flex justify-center items-center relative'>
                                 <img src={item.Img} alt="" className='h-90 rounded-t-2xl  ' />
                                 <span className={`absolute text-[14px] font-medium bg-[#D4AF37] px-4 py-2 rounded-4xl bottom-3 bouns-element ${selectedCard == index ? "bg-black text-[#D4AF37]" : ""} ${profile.language == "eng" ? "left-3" : "right-3"}`}>{profile.language == "eng" ? item.bonusEng : item.bonusArb}</span>
