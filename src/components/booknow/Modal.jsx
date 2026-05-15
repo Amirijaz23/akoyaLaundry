@@ -26,9 +26,9 @@ const Modal = () => {
 
     return (
         profile.showModal &&
-        <div className='w-full px-4 md:px-0 h-full flex justify-center absolute top-20 backdrop-blur-[5px]'>
+        <div className='w-full px-4 md:px-0 h-full flex justify-center fixed top-20 backdrop-blur-[5px]'>
 
-            <div className='bg-white h-140 md:h-100 w-140  mx-auto rounded-2xl overflow-hidden fixed top-40'>
+            <div className='bg-white h-140 md:h-100 w-140  mx-auto rounded-2xl overflow-hidden absolute top-0'>
                 <div className='flex items-center gap-4 bg-linear-to-r from-[#2D2517] to-[#2d251794] p-6 pe-10 relative'>
                     <div className='bg-[#D4AF37] w-12 h-12 flex justify-center items-center rounded-full text-white shrink-0'>
                         <CiUser className='text-[22px]' />
