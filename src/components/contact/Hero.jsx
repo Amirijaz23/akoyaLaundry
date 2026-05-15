@@ -35,7 +35,7 @@ const Hero = () => {
         prevNextButtons: false
     }
     return (
-        <div className='-translate-y-20' >
+        <div className='-mt-20' >
             <Flickity
                 className={'carousel'}
                 elementType={'div'}

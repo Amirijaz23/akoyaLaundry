@@ -10,7 +10,7 @@ const DisplayPage = () => {
         <div className='w-full lg:w-[70%]'>
           <Selection />
         </div>
-        <div className='w-full lg:w-[30%]  sticky border border-gray-400 bg-white rounded-2xl lg:top-40 h-fit'>
+        <div className='w-full lg:w-[30%]  sticky border border-gray-400 bg-white rounded-2xl lg:top-20 h-fit'>
           <OrderSummary />
         </div>
       </div>
