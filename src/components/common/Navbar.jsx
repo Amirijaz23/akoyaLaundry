@@ -14,6 +14,7 @@ const Navbar = () => {
         setnavVisible(false)
     }, [location.pathname])
     function handleLanguageChange() {
+        navigate("/book-now")
         profile.language == "eng" ?
             setProfile(prev => ({ ...prev, language: "arb" })) :
             setProfile(prev => ({ ...prev, language: "eng" }))
