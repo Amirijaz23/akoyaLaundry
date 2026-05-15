@@ -14,7 +14,6 @@ const Navbar = () => {
         setnavVisible(false)
     }, [location.pathname])
     function handleLanguageChange() {
-        navigate("/book-now")
         profile.language == "eng" ?
             setProfile(prev => ({ ...prev, language: "arb" })) :
             setProfile(prev => ({ ...prev, language: "eng" }))
@@ -75,7 +74,7 @@ const Navbar = () => {
                     <button className='text-[14px] font-medium text-white  border border-[#D4AF37] px-4 py-4 lg:py-2 rounded lg:rounded-4xl' onClick={() => handleLanguageChange()} > {profile.language == "arb" ? "English" :
                         "العربية"}</button>
                     <button className='text-[14px] font-medium text-white  border border-[#D4AF37] px-4 py-4 lg:py-2 rounded lg:rounded-4xl cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out' onClick={()=>navigate('/client-login')} >{profile.language == "arb" ? "تسجيل الدخول" : "Client Login"}</button>
-                    <button className='text-[14px] font-medium text-black px-4 py-4 lg:py-2 rounded lg:rounded-4xl bg-[#D4AF37] cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out'>{profile.language == "arb" ? "احجز الآن" : "Book Now"} </button>
+                    <button className='text-[14px] font-medium text-black px-4 py-4 lg:py-2 rounded lg:rounded-4xl bg-[#D4AF37] cursor-pointer hover:scale-110 transition-all duration-300 ease-in-out' onClick={()=>navigate("/book-now")}>{profile.language == "arb" ? "احجز الآن" : "Book Now"} </button>
                 </div>
             </div>
 
