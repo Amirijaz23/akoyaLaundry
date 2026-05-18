@@ -57,11 +57,11 @@ const Navbar = () => {
 
             <div className={`w-[95%] left-2 md:w-[90%] md:mx-[3%] p-6 lg:p-0 lg:mx-0 ${profile.language == "arb" ? "lg:me-[10%]" : "lg:ms-[10%]"}  rounded-2xl absolute top-full   lg:bg-transparent lg:relative lg:flex lg:gap-10 lg:items-center lg:justify-between  ${navVisible ? "backdrop-blur-md bg-[#706e6e9f]" : "hidden"}`}>
 
-                <div className={`flex flex-col text-center lg:flex-row gap-8 mb-6 lg:mb-0 lg:gap-6 order-1  ${profile.language == "arb" ? "lg:flex-row-reverse" : ""}`}>
+                <div className={`flex flex-col text-center lg:flex-row gap-8 mb-6 lg:mb-0 lg:gap-8 order-1  ${profile.language == "arb" ? "lg:flex-row-reverse" : ""}`}>
                     {
                         navbar_english.map((item, index) => (
                             <div  key={index} className="hover:scale-105" >
-                                <Link className='text-[14px] font-medium text-white' to={`${item.link}`}>{profile.language == "arb" ? item.navNameArb : item.navNameEng}</Link>
+                                <Link className='system-font text-[15px] font-medium text-white' to={`${item.link}`}>{profile.language == "arb" ? item.navNameArb : item.navNameEng}</Link>
                             </div>
                         ))
                     }

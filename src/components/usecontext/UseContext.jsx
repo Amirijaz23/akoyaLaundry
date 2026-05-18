@@ -5,7 +5,7 @@ const GlobalData = ({ children }) => {
     const [profile, setProfile] = useState(
         {
             language: "eng",
-            cardCategory: "All",
+            cardCategory: 0,
             serviceType: null,
             servicePage: 1,
             selectedOption: false,
