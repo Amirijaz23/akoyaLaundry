@@ -31,57 +31,55 @@ const App = () => {
   function AppsRouting() {
     return (
       <div>
-        <GlobalData>
           <ScrollFromTop />
           <ToastContainer />
           <Navbar />
           <Outlet />
-          <Footer />
-        </GlobalData>
+          <Footer />   
       </div>
     )
   }
   function RegisterationRouting() {
     return (
       <div>
-        <GlobalData>
-          <ScrollFromTop />
-          <Outlet />
-        </GlobalData>
-      </div>
+        <ScrollFromTop />
+        <Outlet />
+      </div >
     )
   }
 
-  const RoutingFuction = createBrowserRouter(
-    [
-      {
-        element: <AppsRouting />,
-        children: [
-          { path: "/", element: <Home /> },
-          { path: "/services", element: <Services /> },
-          { path: "/about", element: <About /> },
-          { path: "/vision", element: <Vision /> },
-          { path: "/contact", element: <Contact /> },
-          { path: "/book-now", element: <BookNow /> }
-        ]
-      },
-      {
-        element: <RegisterationRouting />,
-        children: [
-          { path: "/client-login", element: <ClientLogin /> },
-          { path: "/sign-up", element: <SignUp /> },
-          { path: "forget-password", element: <ForgetPassword /> }
-        ]
-      }
-    ]
-  )
+const RoutingFuction = createBrowserRouter(
+  [
+    {
+      element: <AppsRouting />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/services", element: <Services /> },
+        { path: "/about", element: <About /> },
+        { path: "/vision", element: <Vision /> },
+        { path: "/contact", element: <Contact /> },
+        { path: "/book-now", element: <BookNow /> }
+      ]
+    },
+    {
+      element: <RegisterationRouting />,
+      children: [
+        { path: "/client-login", element: <ClientLogin /> },
+        { path: "/sign-up", element: <SignUp /> },
+        { path: "forget-password", element: <ForgetPassword /> }
+      ]
+    }
+  ]
+)
 
 
-  return (
-    <div>
+return (
+  <div>
+    <GlobalData>
       <ToastContainer />
       <RouterProvider router={RoutingFuction} />
-    </div>
-  )
+    </GlobalData>
+  </div>
+)
 }
 export default App
