@@ -9,23 +9,19 @@ const Step6 = () => {
     return (
         profile.servicePage == 6 &&
         <div className='flex flex-col gap-4'>
-            <h1 className='text-[20px] font-light'>{translation.personalized_card.heading}
+            <h1 className={`text-[20px] font-light ${profile.language=="eng"?"":"text-right"}`}>{translation.personalized_card.heading}
             </h1>
-            <div>
+            <div className={`${profile.language=="eng"?"":"text-right"}`}>
                 <label htmlFor="from">{translation.personalized_card.from_section.from_heading}<span className='text-red-400'>{translation.personalized_card.from_section.requirement}</span></label>
-                <input type="text" placeholder={translation.personalized_card.from_section.placeholder} className={`my-2 px-4 py-3 rounded-md border   w-full ${profile.fromPerson ? "border-gray-300" : "border-red-400"}`} onChange={(e) => setProfile(prev => ({ ...prev, fromPerson: e.target.value }))} value={profile.fromPerson} />
+                <input type="text" placeholder={translation.personalized_card.from_section.placeholder} className={`my-2 px-4 py-3 rounded-md border   w-full ${profile.language=="eng"?"":"text-right"} ${profile.fromPerson ? "border-gray-300" : "border-red-400"}`} onChange={(e) => setProfile(prev => ({ ...prev, fromPerson: e.target.value }))} value={profile.fromPerson} />
                 {
                     !profile.fromPerson &&
                     <p className='text-red-400'>{translation.personalized_card.show_message}</p>
                 }
             </div>
-            <div>
+            <div className={`${profile.language=="eng"?"":"text-right"}`}>
                 <label htmlFor="to">{translation.personalized_card.to_section.to_heading}<span>{translation.personalized_card.to_section.requirement}</span></label>
-                <input type="text" placeholder={translation.personalized_card.to_section.placeholder} className={`my-2 px-4 py-3 rounded-md border border-gray-300 w-full  ${profile.toPerson ? "border-gray-300" : "border-red-400"}`} onChange={(e) => setProfile(prev => ({ ...prev, toPerson: e.target.value }))} value={profile.toPerson} />
-                {
-                    !profile.toPerson &&
-                    <p className='text-red-400'>{translation.personalized_card.show_message}</p>
-                }
+                <input type="text" placeholder={translation.personalized_card.to_section.placeholder} className={`my-2 px-4 py-3 rounded-md border border-gray-300 w-full ${profile.language=="eng"?"":"text-right"} `} onChange={(e) => setProfile(prev => ({ ...prev, toPerson: e.target.value }))} value={profile.toPerson} />
             </div>
         </div>
     )

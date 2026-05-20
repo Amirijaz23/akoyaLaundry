@@ -31,4 +31,7 @@
   transform: scaleX(2);
   border-radius: 40%;
 }
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
+}
 

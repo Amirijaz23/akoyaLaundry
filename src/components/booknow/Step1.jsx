@@ -28,7 +28,7 @@ const Step1 = () => {
     return (
         profile.servicePage == 1 &&
         <div className='relative h-full'>
-            <h1 className='text-[20px] font-light'>{translation.choose_section.heading}</h1>
+            <h1 className={`text-[20px] font-light lg:px-6 ${profile.language=="eng"?"":"text-right"}`}>{translation.choose_section.heading}</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 px-0 md:px-6'>
                 {
                     translation.choose_section.ServiceTypes.map((item, index) => (

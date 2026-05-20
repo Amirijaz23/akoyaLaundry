@@ -69,7 +69,7 @@ const Step4 = () => {
         profile.servicePage == 4 &&
         <div>
             <div className='pb-4'>
-                <h1 className='text-[20px] font-light'>{translation.perfumed_section.heading}</h1>
+                <h1 className={`text-[20px] font-light ${profile.language=="eng"?"":"text-right"}`}>{translation.perfumed_section.heading}</h1>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 my-4'>
                     <p className={`system-font font-medium border p-4 rounded text-center  hover:scale-105 transition-all duration-300 ease-in-out ${profile.Fragrance ? "border-yellow-400" : "border-gray-400"}`} onClick=
                         {() => HandlePerfumesSelection()} >{translation.perfumed_section.options[0]}</p>
@@ -124,7 +124,7 @@ const Step4 = () => {
                 {
                     profile.Fragrance &&
 
-                    <div className='flex items-center gap-3 border py-2 px-4  border-[#193cb8be] rounded bg-[#193cb80e] text-[#193cb8]'>
+                    <div className={`flex items-center gap-3 border py-2 px-4  border-[#193cb8be] rounded bg-[#193cb80e] text-[#193cb8] ${profile.language=="eng"?"":"flex-row-reverse text-right"}`}>
                         <div>
                             <input type="checkbox" name="" id="" onChange={(e) => setProfile(prev => ({ ...prev, selectedOption: e.target.checked }))} />
                         </div>

@@ -19,7 +19,7 @@ const Selection = () => {
         <h2 className='system-font text-[24px] font-light text-[#C9A227]'>{profile.language=="eng"?"AKOYA PREMIUM LAUNDRY":"أكویا لخدمات الغسيل الفاخرة"}</h2>
         <p className='text-white'>{profile.language=="eng"?`Step ${profile.servicePage} of 6`:`خطوة ${profile.servicePage} من 6`}</p>
       </div>
-      <div className='bg-gray-200 max-h-180 min-h-150 lg:h-140 overflow-auto  pb-14 p-6'>
+      <div className='bg-gray-200 max-h-180 min-h-150 lg:h-140 overflow-auto  pb-14 p-6 no-scrollbar'>
         <Step1 />
         <Step2 />
         <Step3 />
@@ -27,7 +27,7 @@ const Selection = () => {
         <Step5 />
         <Step6 />
       </div>
-      <div className={`absolute bottom-3 w-full flex  px-4 ${profile.servicePage == 1 ? "justify-end" : "justify-between"}`}>
+      <div className={`absolute bottom-3 w-full flex  px-4 ${profile.servicePage == 1 ? "justify-end" : "justify-between"} ${profile.language=="eng"?"":"flex-row-reverse"}`}>
         {
           profile.servicePage > 1 &&
           <button className='font-medium bg-[#E5E7EB] px-8 py-3 rounded transition-all duration-300 ease-in-out border border-gray-400 hover:scale-[1.03] active:scale-95' onClick={() => setProfile(prev => ({ ...prev, servicePage: profile.servicePage - 1 }))}>{profile.language=="eng"?"Prev":"رجوع"}</button>

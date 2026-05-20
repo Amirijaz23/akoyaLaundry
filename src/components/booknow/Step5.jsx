@@ -52,8 +52,8 @@ const Step5 = () => {
     return (
         profile.servicePage == 5 &&
         <div>
-            <h1 className='text-[20px] font-light'>{translation.choose_package.heading}</h1>
-            <div className='grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 my-4 gap-3'>
+            <h1 className={`text-[20px] font-light ${profile.language=="eng"?"":"text-right"}`}>{translation.choose_package.heading}</h1>
+            <div className={`grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 my-4 gap-3 ${profile.language=="eng"?"":"[direction:rtl]"}`}>
                 {
                     all_packages.map((item, index) => (
                         <div key={index} className={`border flex items-center flex-col min-h-100 rounded-[20px]  overflow-hidden ${profile.packagingId == item.id ? "border-yellow-400" : "border-gray-400"}`} onClick={() => HandleSelectedPackage(item, index)}>

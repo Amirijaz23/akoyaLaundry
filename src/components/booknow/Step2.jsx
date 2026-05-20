@@ -62,8 +62,8 @@ const Step2 = () => {
 
     profile.servicePage == 2 &&
     < div >
-      <h1 className='text-[20px] font-light'>{translation.clothes_section.heading}</h1>
-      <div className='grid grid-col-1 sm:grid-cols-2 gap-4'>
+      <h1 className={`text-[20px] font-light ${profile.language=="eng"?"":"text-right"}`}>{translation.clothes_section.heading}</h1>
+      <div className={`grid grid-col-1 sm:grid-cols-2 gap-4 ${profile.language=="eng"?"":"[direction:rtl]"}`}>
         <div>
           <h2 className='text-[18px] font-medium system-font my-2'>{profile.language=="eng"?"Men's":"رجالي"}</h2>
           {
