@@ -4,10 +4,13 @@ import {toast} from 'react-toastify'
 import { CiUser } from "react-icons/ci";
 import { RxCross2 } from "react-icons/rx";
 import emailjs from '@emailjs/browser'
+import EngTranslation from '../booknow/Translation/Eng/Modal.json'
+import ArbTranslation from '../booknow/Translation/Arb/Modal.json'
 
 const Modal = () => {
     const { profile, setProfile, totalBill, clothes } = useContext(MyContext)
     const form = useRef()
+    const translation=profile.language=="eng"?EngTranslation:ArbTranslation
     function HandleSubmission(e) {
         e.preventDefault();
         emailjs
@@ -16,10 +19,10 @@ const Modal = () => {
             }).then(
                 () => {
                     setProfile(prev => ({ ...prev, showModal: false }))
-                    toast.success("Send Emails")
+                    toast.success(`${translation.buynow_section.address_section.success_send}`)
                 },
                 (error) => {
-                    toast.warning("Error In Sending")
+                    toast.warning(`${translation.buynow_section.address_section.not_send}`)
                 },
             );
     }
@@ -34,8 +37,8 @@ const Modal = () => {
                         <CiUser className='text-[22px]' />
                     </div>
                     <div className='text-white'>
-                        <h2 className='text-[180x] font-bold'>Guest Order Information</h2>
-                        <p className='text-[14px]'>Please provide your contact details to place the order</p>
+                        <h2 className='text-[180x] font-bold'>{translation.buynow_section.title}</h2>
+                        <p className='text-[14px]'>{translation.buynow_section.main_description}</p>
                     </div>
                     <div className='absolute right-4 w-10 h-10 active:scale-95 shrink-0 bg-transparent hover:bg-gray-600 rounded-full flex justify-center items-center'>
                         <RxCross2 className='text-[22px] text-white' onClick={() => setProfile(prev => ({ ...prev, showModal: false }))} />
@@ -63,41 +66,41 @@ const Modal = () => {
                         }
                         <div className='flex flex-col md:flex-row gap-4'>
                             <div className='w-full md:w-[50%] flex flex-col gap-2'>
-                                <p className='text-[#364153] text-[12px] font-semibold'>Full Name <span className='text-red-400'>*</span></p>
-                                <input name='fname' type="text" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder='Enter your full name' required />
+                                <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.name_section.name_label}<span className='text-red-400'>*</span></p>
+                                <input name='fname' type="text" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder={translation.buynow_section.name_section.name_placeholder} required />
                             </div>
                             <div className='w-full md:w-[50%] flex flex-col gap-2'>
-                                <p className='text-[#364153] text-[12px] font-semibold'>Email Address (Optional)</p>
-                                <input type="text" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder='your@email.com (optional)' name='email' />
+                                <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.email_section.email_label}</p>
+                                <input type="text" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder={translation.buynow_section.email_section.email_placeholder} name='email' />
                             </div>
                         </div>
                         <div className='flex flex-col gap-3 my-4 relative'>
-                            <p className='text-[#364153] text-[12px] font-semibold'>Whatsapp Number <span className='text-red-400'>*</span></p>
+                            <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.number_label}<span className='text-red-400'>*</span></p>
                             <input type="number" className='w-full p-2  border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 ps-12 pe-4 focus:outline-0' required name='wappNumber' />
                             <p className='absolute top-10 px-2 w-fit' >+974</p>
                         </div>
                         <div className='flex flex-col gap-1'>
-                            <p className='text-[#364153] text-[12px] font-semibold'>Delivery Address <span className='text-red-400'>*</span></p>
-                            <p className='text-[#364153] text-[12px] font-semibold'>Unit Number (Optional)</p>
-                            <input type="text" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder='e.g., 101' name='unitNumber' />
+                            <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.address_section.main_label}<span className='text-red-400'>*</span></p>
+                            <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.address_section.unit_section.unit_label}</p>
+                            <input type="text" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder={translation.buynow_section.address_section.unit_section.unit_placeholder} name='unitNumber' />
                         </div>
                         <div className='grid grid-col-1 md:grid-cols-3 gap-2 my-2'>
                             <div className='flex flex-col gap-2'>
-                                <p className='text-[#364153] text-[12px] font-semibold'>Zone <span className='text-red-400'>*</span></p>
-                                <input type="number" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder='e.g., zone 38' name='zoneNumber' required />
+                                <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.address_section.zone_section.zone_label}<span className='text-red-400'>*</span></p>
+                                <input type="number" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder={translation.buynow_section.address_section.zone_section.zone_placeholder} name='zoneNumber' required />
                             </div>
                             <div className='flex flex-col gap-2'>
-                                <p className='text-[#364153] text-[12px] font-semibold'>Street<span className='text-red-400'>*</span></p>
-                                <input type="number" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder='e.g., Al Sadaad Street' name='streetNumber' required />
+                                <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.address_section.street_section.street_label}<span className='text-red-400'>*</span></p>
+                                <input type="number" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder={translation.buynow_section.address_section.street_section.street_placeholder} name='streetNumber' required />
                             </div>
                             <div className='flex flex-col gap-2'>
-                                <p className='text-[#364153] text-[12px] font-semibold'>Building Number<span className='text-red-400'>*</span></p>
-                                <input type="number" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder='e.g., 25' name='builidingNumber' required />
+                                <p className='text-[#364153] text-[12px] font-semibold'>{translation.buynow_section.address_section.building_section.building_label}<span className='text-red-400'>*</span></p>
+                                <input type="number" className='w-full p-2 px-4 border border-gray-400 rounded-2xl focus:border-2 focus:border-yellow-400 focus:outline-0' placeholder={translation.buynow_section.address_section.building_section.building_placeholder} name='builidingNumber' required />
                             </div>
                         </div>
                         <div className='grid grid-cols-2 my-2 gap-3'>
-                            <button onClick={() => setProfile(prev => ({ ...prev, showModal: false }))} className='text-[14px] font-semibold border-2 border-gray-300 p-3 rounded-2xl hover:border-gray-400 system-font'>Cancel</button>
-                            <button type='submit' className='text-[white] text-[14px] font-semibold system-font bg-[#d2ad35] rounded-2xl hover:bg-[#775f12]'>Proceed With Order</button>
+                            <button onClick={() => setProfile(prev => ({ ...prev, showModal: false }))} className='text-[14px] font-semibold border-2 border-gray-300 p-3 rounded-2xl hover:border-gray-400 system-font'>{translation.buynow_section.address_section.not_send}</button>
+                            <button type='submit' className='text-[white] text-[14px] font-semibold system-font bg-[#d2ad35] rounded-2xl hover:bg-[#775f12]'>{translation.buynow_section.address_section.order_button}</button>
                         </div>
                     </form>
                 </div>

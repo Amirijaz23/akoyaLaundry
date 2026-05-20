@@ -1,0 +1,38 @@
+{
+    "buynow_section": {
+        "title": "Guest Order Information",
+        "main_description": "Please provide your contact details to place the order",
+        "name_section": {
+            "name_label": "Full Name",
+            "name_placeholder": "Full Name *"
+        },
+        "email_section": {
+            "email_label": "Email Address (Optional)",
+            "email_placeholder": "your@email.com (Optional)"
+        },
+        "number_label": "WhatsApp Number *",
+        "address_section":{
+            "main_label":"Delivery Address *",
+            "unit_section":{
+                "unit_label":"Unit Number (Optional)",
+                "unit_placeholder":"e.g., 101"
+            },
+            "zone_section":{
+                "zone_label":"Zone",
+                "zone_placeholder":"e.g., Zone 38"
+            },
+            "street_section":{
+                "street_label":"Street",
+                "street_placeholder":"e.g., Al Sadd Street"
+            },
+            "building_section":{
+                "building_label":"Building Number",
+                "building_placeholder":"e.g., 25"
+            },
+            "cancel_button":"Cancel",
+            "order_button":"Proceed with Order",
+            "success_send":"Send Email",
+            "not_send":"Error"
+        }
+    }
+}

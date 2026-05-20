@@ -16,8 +16,8 @@ const Selection = () => {
         <div className={`h-full bg-[#C9A227]`} style={{width: `${(profile.servicePage / 6) * 100}%`}}></div>
       </div>
       <div className='flex justify-center items-center  flex-col  py-6 bg-linear-to-l from-[#312819] via-[#312819d3] to-[#312819]'>
-        <h2 className='system-font text-[24px] font-light text-[#C9A227]'>AKOYA PREMIUM LAUNDRY</h2>
-        <p className='text-white'>Step {profile.servicePage} of 6</p>
+        <h2 className='system-font text-[24px] font-light text-[#C9A227]'>{profile.language=="eng"?"AKOYA PREMIUM LAUNDRY":"أكویا لخدمات الغسيل الفاخرة"}</h2>
+        <p className='text-white'>{profile.language=="eng"?`Step ${profile.servicePage} of 6`:`خطوة ${profile.servicePage} من 6`}</p>
       </div>
       <div className='bg-gray-200 max-h-180 min-h-150 lg:h-140 overflow-auto  pb-14 p-6'>
         <Step1 />
@@ -30,11 +30,11 @@ const Selection = () => {
       <div className={`absolute bottom-3 w-full flex  px-4 ${profile.servicePage == 1 ? "justify-end" : "justify-between"}`}>
         {
           profile.servicePage > 1 &&
-          <button className='font-medium bg-[#E5E7EB] px-8 py-3 rounded transition-all duration-300 ease-in-out border border-gray-400 hover:scale-[1.03] active:scale-95' onClick={() => setProfile(prev => ({ ...prev, servicePage: profile.servicePage - 1 }))}>Prev</button>
+          <button className='font-medium bg-[#E5E7EB] px-8 py-3 rounded transition-all duration-300 ease-in-out border border-gray-400 hover:scale-[1.03] active:scale-95' onClick={() => setProfile(prev => ({ ...prev, servicePage: profile.servicePage - 1 }))}>{profile.language=="eng"?"Prev":"رجوع"}</button>
         }
         {
           profile.servicePage < 6 &&
-          <button  disabled={!profile.selectedOption} className={`font-medium px-8 py-3 rounded   ${profile.selectedOption ? "bg-[#D4AF37] cursor-pointer active:scale-95" : "bg-gray-400 cursor-no-drop not-enabled"}`} onClick={() => setProfile(prev => ({ ...prev, servicePage: profile.servicePage + 1, selectedOption: false }))}>Next</button>
+          <button  disabled={!profile.selectedOption} className={`font-medium px-8 py-3 rounded   ${profile.selectedOption ? "bg-[#D4AF37] cursor-pointer active:scale-95" : "bg-gray-400 cursor-no-drop not-enabled"}`} onClick={() => setProfile(prev => ({ ...prev, servicePage: profile.servicePage + 1, selectedOption: false }))}>{profile.language=="eng"?"Next":"التالي"}</button>
         }
       </div>
     </div>

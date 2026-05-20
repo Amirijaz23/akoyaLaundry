@@ -1,0 +1,25 @@
+{
+    "choose_package": {
+        "heading": "How would you like us to package your garments?",
+        "packaging_types": [
+            {
+                "id": 1,
+                "packaging_heading": "Plastic Packaging",
+                "packaging_description": "Standard plastic bag packaging",
+                "packaging_price": "Free"
+            },
+            {
+                "id": 2,
+                "packaging_heading": "Premium Fabric Packaging",
+                "packaging_description": "Luxury fabric bag packaging - Choose your preferred color",
+                "packaging_price": "10"
+            },
+            {
+                "id": 3,
+                "packaging_heading": "Luxury Gift Box",
+                "packaging_description": "Elegant gift box packaging",
+                "packaging_price": "4"
+            }
+        ]
+    }
+}

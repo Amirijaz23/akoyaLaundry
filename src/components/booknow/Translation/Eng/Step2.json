@@ -1,0 +1,205 @@
+{
+    "clothes_section": {
+        "heading": "What clothes are you sending us?",
+        "clothes": {
+            "men_clothes": [
+                {
+                    "id": "1",
+                    "Icon": "👔",
+                    "name": "Thobe",
+                    "price": "10"
+                },
+                {
+                    "id": "2",
+                    "Icon": "🧥",
+                    "name": "Bisht",
+                    "price": "40"
+                },
+                {
+                    "id": "3",
+                    "Icon": "🤵",
+                    "name": "Men's Suit",
+                    "price": "21"
+                },
+                {
+                    "id": "4",
+                    "Icon": "👳",
+                    "name": "Ghutra",
+                    "price": "5"
+                },
+                {
+                    "id": "5",
+                    "Icon": "👕",
+                    "name": "Shirt",
+                    "price": "5"
+                },
+                {
+                    "id": "6",
+                    "Icon": "👔",
+                    "name": "Tie",
+                    "price": "5"
+                },
+                {
+                    "id": "7",
+                    "Icon": "👕",
+                    "name": "T-shirt",
+                    "price": "5"
+                },
+                {
+                    "id": "8",
+                    "Icon": "🦺",
+                    "name": "Vest",
+                    "price": "5"
+                },
+                {
+                    "id": "9",
+                    "Icon": "🧥",
+                    "name": "Coat",
+                    "price": "23"
+                },
+                {
+                    "id": "10",
+                    "Icon": "🩳",
+                    "name": "Pajamas",
+                    "price": "4"
+                },
+                {
+                    "id": "11",
+                    "Icon": "🎖️",
+                    "name": "Military Uniform",
+                    "price": "9"
+                },
+                {
+                    "id": "12",
+                    "Icon": "👷",
+                    "name": "Overalls",
+                    "price": "4"
+                },
+                {
+                    "id": "13",
+                    "Icon": "🥼",
+                    "name": "Lab Coat",
+                    "price": "6"
+                },
+                {
+                    "id": "14",
+                    "Icon": "👕",
+                    "name": "Undershirt",
+                    "price": "1"
+                },
+                {
+                    "id": "15",
+                    "Icon": "👖",
+                    "name": "Pants",
+                    "price": "2"
+                }
+            ],
+            "womens_clothes": [
+                {
+                    "id": "16",
+                    "Icon": "🧕",
+                    "name": "Abaya",
+                    "price": "10"
+                },
+                {
+                    "id": "17",
+                    "Icon": "👗",
+                    "name": "Long Dress",
+                    "price": "15"
+                },
+                {
+                    "id": "18",
+                    "Icon": "👗",
+                    "name": "Short Dress",
+                    "price": "10"
+                },
+                {
+                    "id": "19",
+                    "Icon": "👘",
+                    "name": "Jalabiya",
+                    "price": "6"
+                },
+                {
+                    "id": "20",
+                    "Icon": "🧣",
+                    "name": "Scarf",
+                    "price": "2"
+                },
+                {
+                    "id": "21",
+                    "Icon": "👚",
+                    "name": "Silk Blouse",
+                    "price": "4"
+                },
+                {
+                    "id": "22",
+                    "Icon": "👗",
+                    "name": "Women's Summer Suit",
+                    "price": "16"
+                }
+            ],
+            "household_items": [
+                {
+                    "id": "23",
+                    "Icon": "🛏️",
+                    "name": "Double Bed Cover",
+                    "price": "18"
+                },
+                {
+                    "id": "24",
+                    "Icon": "🛏️",
+                    "name": "Single Bed Cover",
+                    "price": "15"
+                },
+                {
+                    "id": "25",
+                    "Icon": "🛏️",
+                    "name": "Double Bed Sheet",
+                    "price": "14"
+                },
+                {
+                    "id": "26",
+                    "Icon": "🛏️",
+                    "name": "Single Bed Sheet",
+                    "price": "13"
+                },
+                {
+                    "id": "27",
+                    "Icon": "🧸",
+                    "name": "Double Blanket",
+                    "price": "25"
+                },
+                {
+                    "id": "28",
+                    "Icon": "🧸",
+                    "name": "Single Blanket",
+                    "price": "20"
+                },
+                {
+                    "id": "29",
+                    "Icon": "🏖️",
+                    "name": "Small Towel",
+                    "price": "10"
+                },
+                {
+                    "id": "30",
+                    "Icon": "🏖️",
+                    "name": "Large Towel",
+                    "price": "13"
+                },
+                {
+                    "id": "31",
+                    "Icon": "😴",
+                    "name": " Pillowcase",
+                    "price": "4"
+                },
+                {
+                    "id": "32",
+                    "Icon": "😴",
+                    "name": " Large Feather Pillow",
+                    "price": "15"
+                }
+            ]
+        }
+    }
+}

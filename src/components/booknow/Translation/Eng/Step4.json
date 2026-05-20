@@ -1,0 +1,42 @@
+{
+    "perfumed_section": {
+        "heading": "Would you like your clothes to be perfumed?",
+        "options": [
+            "Yes",
+            "No"
+        ],
+        "womens_perfumed": [
+            {
+                "id": 1,
+                "Heading": "Lulwa",
+                "description": "Where Sparkle Meets Scent"
+            },
+            {
+                "id": 2,
+                "Heading": "Sadf (Women)",
+                "description": "Your Unique Presence"
+            }
+        ],
+        "mens_perfumed": [
+            {
+                "id": 3,
+                "Heading": "Maknoun",
+                "description": "The Secret of Your Allure"
+            },
+            {
+                "id": 4,
+                "Heading": "Mad",
+                "description": "A Wave of Presence That Never Fades"
+            },
+            {
+                "id": 5,
+                "Heading": "Sadf (Men)",
+                "description": "Your Unique Presence"
+            }
+        ],
+        "check_box": {
+            "check_heading": "I confirm that I do not have any allergy to Oud and its components.",
+            "check_description": "This confirmation is required for your safety"
+        }
+    }
+}

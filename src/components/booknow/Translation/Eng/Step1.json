@@ -1,0 +1,22 @@
+{
+    "choose_section": {
+        "heading": "Choose Service Type",
+        "ServiceTypes": [
+            {
+                "Icon": "👕",
+                "Heading": "Washing & Ironing",
+                "Description": "Complete washing with ironing"
+            },
+            {
+                "Icon": "✨",
+                "Heading": "Washing, Ironing, and Perfume Services",
+                "Description": "Complete washing with ironing and perfume services"
+            },
+            {
+                "Icon": "👔",
+                "Heading": "Dry Clean",
+                "Description": "Professional dry cleaning"
+            }
+        ]
+    }
+}

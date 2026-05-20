@@ -1,0 +1,16 @@
+{
+    "personalized_card": {
+        "heading": "هل ترغب في إضافة بطاقة مخصصة؟",
+        "from_section": {
+            "from_heading": "من",
+            "requirement": "*",
+            "placeholder": "اسمك (مطلوب) *"
+        },
+        "to_section": {
+            "to_heading": "إلى",
+            "requirement": "(اختياري)",
+            "placeholder": "اسم المستلم (اختياري)"
+        },
+        "show_message": "هذا الحقل مطلوب"
+    }
+}

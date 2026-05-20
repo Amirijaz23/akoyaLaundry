@@ -1,0 +1,22 @@
+{
+    "choose_section": {
+        "heading": "اختر نوع الخدمة:",
+        "ServiceTypes": [
+            {
+                "Icon": "👕",
+                "Heading": "غسيل وكي",
+                "Description": "غسيل كامل مع الكي"
+            },
+            {
+                "Icon": "✨",
+                "Heading": "غسيل وكي وخدمات العطر",
+                "Description": "غسيل كامل مع الكي وخدمات العطر"
+            },
+            {
+                "Icon": "👔",
+                "Heading": "تنظيف جاف",
+                "Description": "تنظيف جاف احترافي"
+            }
+        ]
+    }
+}

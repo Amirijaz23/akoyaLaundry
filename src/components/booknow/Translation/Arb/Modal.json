@@ -1,0 +1,38 @@
+{
+    "buynow_section": {
+        "title": "معلومات طلب الضيف",
+        "main_description": "يرجى تقديم تفاصيل الاتصال الخاصة بك لتقديم الطلب",
+        "name_section": {
+            "name_label": "الاسم الكامل",
+            "name_placeholder": "الاسم الكامل *"
+        },
+        "email_section": {
+            "email_label": "عنوان البريد الإلكتروني (اختياري)",
+            "email_placeholder": "your@email.com (اختياري)"
+        },
+        "number_label": "رقم الواتساب *",
+        "address_section":{
+            "main_label":"عنوان التسليم *",
+            "unit_section":{
+                "unit_label":"رقم الوحدة (اختياري)",
+                "unit_placeholder":"مثال: 101"
+            },
+            "zone_section":{
+                "zone_label":"المنطقة",
+                "zone_placeholder":"مثال: المنطقة 38"
+            },
+            "street_section":{
+                "street_label":"الشارع",
+                "street_placeholder":"مثال: شارع السد"
+            },
+            "building_section":{
+                "building_label":"رقم المبنى",
+                "building_placeholder":"مثال: 25"
+            },
+            "cancel_button":"إلغاء",
+            "order_button":"المتابعة مع الطلب",
+            "success_send":"إرسال البريد الإلكتروني",
+            "not_send":"خطأ"
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "personalized_card":{
+        "heading":"Want to include a personalized card?",
+        "from_section":{
+            "from_heading":"From",
+            "requirement":"*",
+            "placeholder":"your name (required) *"
+        },
+        "to_section":{
+            "to_heading":"To",
+            "requirement":"(Optional)",
+            "placeholder":"Recipient  name (Optional)"
+        },
+        "show_message":"This Filed is required"
+    }
+}

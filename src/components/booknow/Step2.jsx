@@ -2,81 +2,73 @@ import React, { useContext, useEffect } from 'react'
 import { MyContext } from '../usecontext/UseContext'
 import { FaPlus } from "react-icons/fa6";
 import { useLocation } from 'react-router-dom';
+import engTranslation from '../booknow/Translation/Eng/Step2.json'
+import arbTranslation from '../booknow/Translation/Arb/Step2.json'
 
 const Step2 = () => {
   const location = useLocation()
   const { profile, setProfile, clothes, setClothes } = useContext(MyContext)
-  function HandlingClick(item) {
+  const translation = profile.language == "eng" ? engTranslation : arbTranslation
+  const all_clothes = translation.clothes_section.clothes
+  const men_clothes = all_clothes.men_clothes
+  const women_clothes = all_clothes.womens_clothes
+  const household_items = all_clothes.household_items
+  function HandlingClick(item, index) {
     setProfile(prev => ({ ...prev, selectedOption: true }))
     let isExist = false
-    clothes.map((list_item) => {
-      if (list_item.itemName == item.name) {
+    clothes.map((object_item) => {
+      if (object_item.itemId == item.id) {
         isExist = true
-        list_item.itemQuantity = list_item.itemQuantity + 1
-        list_item.totalPrice = list_item.itemQuantity * list_item.itemPrice
+        object_item.itemQuantity = object_item.itemQuantity + 1
+        object_item.totalPrice = object_item.itemQuantity * object_item.itemPrice
         setClothes(prev => [...prev])
       }
       return null
     })
     !isExist &&
-      setClothes(prev => [...prev, { "itemName": item.name, "itemPrice": item.price, "itemQuantity": 1, "totalPrice": item.price }])
+      setClothes(prev => [...prev, { "itemName": item.name, "itemPrice": item.price, "itemQuantity": 1, "totalPrice": item.price, "itemId": item.id }])
   }
-
+  function languageChangeHandler() {
+    men_clothes.map((item) => {
+      clothes.map((list_item) => {
+        if (list_item.itemId === item.id) {
+          list_item.itemName = item.name
+        }
+      })
+    })
+    women_clothes.map((item) => {
+      clothes.map((list_item) => {
+        if (list_item.itemId === item.id) {
+          list_item.itemName = item.name
+        }
+      })
+    })
+   household_items.map((item) => {
+      clothes.map((list_item) => {
+        if (list_item.itemId === item.id) {
+          list_item.itemName = item.name
+        }
+      })
+    })
+    setClothes(prev => [...prev])
+  }
   useEffect(() => {
     if (profile.servicePage == 2) {
       clothes.length >= 1 ? setProfile(prev => ({ ...prev, selectedOption: true })) : setProfile(prev => ({ ...prev, selectedOption: false }))
     }
-  }, [profile.servicePage,clothes])
-
-  const Mens = [
-    { Icon: "👔", name: "Thobe", price: 10, },
-    { Icon: "🧥", name: "Bisht", price: 40, },
-    { Icon: "🤵", name: "Men's Suit", price: 21, },
-    { Icon: "👳", name: "Ghutra", price: 5, },
-    { Icon: "👕", name: "Shirt", price: 5, },
-    { Icon: "👔", name: "Tie", price: 5, },
-    { Icon: "👕", name: "T-shirt", price: 5, },
-    { Icon: "🦺", name: "Vest", price: 5, },
-    { Icon: "🧥", name: "Coat", price: 23, },
-    { Icon: "🩳", name: "Pajamas", price: 4, },
-    { Icon: "🎖️", name: "Military Uniform", price: 9, },
-    { Icon: "👷", name: "Overalls", price: 4, },
-    { Icon: "🥼", name: "Lab Coat", price: 6, },
-    { Icon: "👕", name: "Undershirt", price: 1, },
-    { Icon: "👖", name: "Pants", price: 2, },
-  ]
-  const Womens = [
-    { Icon: "🧕", name: "Abaya", price: 10, },
-    { Icon: "👗", name: "Long Dress", price: 15, },
-    { Icon: "👗", name: "Short Dress", price: 10, },
-    { Icon: "👘", name: "Jalabiya", price: 6, },
-    { Icon: "🧣", name: "Scarf", price: 2, },
-    { Icon: "👚", name: "Silk Blouse", price: 4, },
-    { Icon: "👗", name: "Women's Summer Suit", price: 16, },
-  ]
-  const HouseHoldItem = [
-    { Icon: "🛏️", name: "Double Bed Cover", price: 18, },
-    { Icon: "🛏️", name: "Single Bed Cover", price: 15, },
-    { Icon: "🛏️", name: "Double Bed Sheet", price: 14, },
-    { Icon: "🛏️", name: "Single Bed Sheet", price: 13, },
-    { Icon: "🧸", name: "Double Blanket", price: 25, },
-    { Icon: "🧸", name: "Single Blanket", price: 20, },
-    { Icon: "🏖️", name: "Small Towel", price: 10, },
-    { Icon: "🏖️", name: "Large Towel", price: 13, },
-    { Icon: "😴", name: " Pillowcase", price: 4, },
-    { Icon: "😴", name: " Large Feather Pillow", price: 15, },
-  ]
+    languageChangeHandler()
+  }, [profile.servicePage, clothes, profile.language])
   return (
 
     profile.servicePage == 2 &&
     < div >
-      <h1 className='text-[20px] font-light'>What Clothes are you sending us?</h1>
+      <h1 className='text-[20px] font-light'>{translation.clothes_section.heading}</h1>
       <div className='grid grid-col-1 sm:grid-cols-2 gap-4'>
         <div>
-          <h2 className='text-[18px] font-medium system-font my-2'>Men's</h2>
+          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language=="eng"?"Men's":"رجالي"}</h2>
           {
-            Mens.map((item, index) => (
-              <div key={index} className='border border-gray-300 flex items-center justify-between p-4 rounded my-3 hover:border-yellow-400 hover:scale-[1.02] active:scale-[0.98]' onClick={() => HandlingClick(item)}>
+            men_clothes.map((item, index) => (
+              <div key={index} className='border border-gray-300 flex items-center justify-between p-4 rounded my-3 hover:border-yellow-400 hover:scale-[1.02] active:scale-[0.98]' onClick={() => HandlingClick(item, index)}>
                 <div className='flex gap-2'>
                   <p>{item.Icon}</p>
                   <p>{item.name}</p>
@@ -87,9 +79,9 @@ const Step2 = () => {
           }
         </div>
         <div>
-          <h2 className='text-[18px] font-medium system-font my-2'>Women's</h2>
+          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language=="eng"?"Women's":"نسائي"}</h2>
           {
-            Womens.map((item, index) => (
+            women_clothes.map((item, index) => (
               <div key={index} className='border border-gray-300 flex items-center justify-between p-4 rounded my-3 hover:border-yellow-400 hover:scale-[1.02] active:scale-[0.98]' onClick={() => HandlingClick(item)}>
                 <div className='flex gap-2'>
                   <p>{item.Icon}</p>
@@ -102,9 +94,9 @@ const Step2 = () => {
         </div>
 
         <div>
-          <h2 className='text-[18px] font-medium system-font my-2'>Household Items</h2>
+          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language=="eng"?"Household Items":"الأدوات المنزلية"}</h2>
           {
-            HouseHoldItem.map((item, index) => (
+            household_items.map((item, index) => (
               <div key={index} className='border border-gray-300 flex items-center justify-between p-4 rounded my-3 hover:border-yellow-400 hover:scale-[1.02] active:scale-[0.98]' onClick={() => HandlingClick(item)}>
                 <div className='flex gap-2'>
                   <p>{item.Icon}</p>

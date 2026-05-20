@@ -1,0 +1,25 @@
+{
+    "steam_section": {
+        "heading": "Do you want us to steam the garments?",
+        "options": [
+            "Yes",
+            "No"
+        ]
+    },
+    "oud_section": {
+        "heading": "Would you like your clothes to be incensed with Oud?",
+        "options": [
+            "Yes",
+            "No"
+        ],
+        "OudObject": {
+            "Choose_oud": "Choose your preferred Oud type:",
+            "Oud_title": "Premium Cambodian Oud",
+            "Oud_Description": "Authentic Cambodian oud with rich, deep aroma"
+        }
+    },
+    "check_box": {
+        "check_heading": "I confirm that I do not have any allergy to Oud and its components.",
+        "check_description": "This confirmation is required for your safety"
+    }
+}

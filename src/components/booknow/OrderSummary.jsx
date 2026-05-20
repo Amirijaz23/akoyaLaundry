@@ -6,18 +6,17 @@ const OrderSummary = () => {
     const [coupon, setCoupon] = useState(null)
     const { profile, setProfile, clothes, setClothes, totalBill, setTotalBill } = useContext(MyContext)
     useEffect(() => {
-        
         let clothes_price = 0
         clothes.map((item) => {
             clothes_price += parseInt(item.totalPrice)
         })
-        console.log(clothes_price)
+        // console.log(clothes_price)
         setTotalBill((profile.Incense ? 4 : 0) + (profile.selectedFragrance ? 4 : 0) + (profile.packagingPrice == "Free" ? 0 : parseInt(profile.packagingPrice))+(clothes.length>=1?clothes_price:0))
     }, [profile, clothes])
 
     function HandleAddColthes(item) {
         clothes.map((list_item) => {
-            if (list_item.itemName == item.itemName) {
+            if (list_item.itemId == item.itemId) {
                 item.itemQuantity = item.itemQuantity + 1
                 item.totalPrice = item.itemQuantity * item.itemPrice
                 setClothes(prev => [...prev])
@@ -28,7 +27,7 @@ const OrderSummary = () => {
 
     function HandleSubtractClothes(item) {
         clothes.map((list_item) => {
-            if (list_item.itemName == item.itemName) {
+            if (list_item.itemId == item.itemId) {
                 item.itemQuantity > 1 ?
                     item.itemQuantity = item.itemQuantity - 1 : ""
                 item.totalPrice = item.itemQuantity * item.itemPrice
@@ -45,13 +44,13 @@ const OrderSummary = () => {
     }
     return (
         <div className='flex justify-center py-6 rounded-2xl overflow-hidden flex-col gap-4 p-4  max-h-120'>
-            <h2 className='text-[20px] font-bold text-[#d4af37] text-center'>🧾 Order Summary</h2>
+            <h2 className='text-[20px] font-bold text-[#d4af37] text-center'>{profile.language=="eng"?"🧾 Order Summary":" ملخص الطلب 🧾"}</h2>
             <div className='h-px bg-gray-400'></div>
             <div className='overflow-auto'>
                 {profile.serviceType != null &&
                     <>
                         <div className='flex justify-between'>
-                            <h2 className='font-medium'>Service Type</h2>
+                            <h2 className='font-medium'>{profile.language=="eng"?"Service Type":"نوع الخدمة:"}</h2>
                             <p>{profile.serviceType}</p>
                         </div>
                         <div className='h-px bg-black my-2'></div>
@@ -61,7 +60,7 @@ const OrderSummary = () => {
                     <>
                         {
                             clothes.length >= 1 &&
-                            <h1 className={`font-medium text-[16px]`}>Garments</h1>
+                            <h1 className={`font-medium text-[16px]`}>{profile.language=="eng"?"Garments":"الملابس:"}</h1>
                         }
                         {
                             clothes &&
@@ -89,9 +88,9 @@ const OrderSummary = () => {
                     <>
                         <div className='h-px bg-gray-400 my-2'></div>
                         <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>Steam Finishing:</h1>
+                            <h1 className='font-semibold'>{profile.language=="eng"?"Steam Finishing:":"كي بالبخار:"}</h1>
                             <div className='flex items-center gap-3'>
-                                <p className='text-green-500 font-medium'>Included</p>
+                                <p className='text-green-500 font-medium'>{profile.language=="eng"?"Included":"مشمول"}</p>
                                 <RxCross2 className='text-red-400' onClick={() => setProfile(prev => ({ ...prev, steamFinishing: false }))} />
                             </div>
                         </div>
@@ -103,9 +102,9 @@ const OrderSummary = () => {
                     <>
                         <div className='h-px bg-gray-400 my-2'></div>
                         <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>Incense</h1>
+                            <h1 className='font-semibold'>{profile.language=="eng"?"Incense":"البخور"}</h1>
                             <div className='flex items-center gap-3'>
-                                <p className='font-medium'>+4 QAR</p>
+                                <p className='font-medium'>{profile.language=="eng"?"+4 QAR":"+4 ريال"}</p>
                                 <RxCross2 className='text-red-400' onClick={() => setProfile(prev => ({ ...prev, Incense: false }))} />
                             </div>
                         </div>
@@ -116,9 +115,9 @@ const OrderSummary = () => {
                     <>
                         <div className='h-px bg-gray-400 my-2'></div>
                         <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>Fragrance</h1>
+                            <h1 className='font-semibold'>{profile.language=="eng"?"Fragrance":"العطر:"}</h1>
                             <div className='flex items-center gap-3'>
-                                <p className='font-medium'>+4 QAR</p>
+                                <p className='font-medium'>{profile.language=="eng"?"+4 QAR":"+4 ريال"}</p>
                                 <RxCross2 className='text-red-400' onClick={() => setProfile(prev => ({ ...prev, selectedFragrance: null }))} />
                             </div>
                         </div>
@@ -130,7 +129,7 @@ const OrderSummary = () => {
                     <>
                         <div className='h-px bg-gray-400 my-2'></div>
                         <div className='flex items-center justify-between'>
-                            <h1 className='font-semibold'>Packaging: </h1>
+                            <h1 className='font-semibold'>{profile.language=="eng"?"Packaging:":"التغليف:"}</h1>
                             <div className='flex items-center gap-3'>
                                 <p className='font-medium'>{profile.packagingPrice}</p>
                                 <RxCross2 className='text-red-400' onClick={() => setProfile(prev => ({ ...prev, packagingType: null, packagingPrice: 0 }))} />
@@ -144,14 +143,14 @@ const OrderSummary = () => {
                     <>
                         <div className='h-px bg-gray-400 my-2'></div>
                         <div className='flex flex-col'>
-                            <h1>Personalized Card</h1>
+                            <h1 className='font-medium'>{profile.language=="eng"?"Personalized Card":"بطاقة شخصية:"}</h1>
                             {
                                 profile.fromPerson &&
-                                <p>From : {profile.fromPerson}</p>
+                                <p>{profile.language=="eng"?"From : ":"من"}{profile.fromPerson}</p>
                             }
                             {
                                 profile.toPerson &&
-                                <p>To: {profile.toPerson}</p>
+                                <p>{profile.language=="eng"?"To:":"إلى (اختياري)"} {profile.toPerson}</p>
                             }
                         </div>
 

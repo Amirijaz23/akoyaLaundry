@@ -1,0 +1,42 @@
+{
+    "perfumed_section": {
+        "heading": "هل ترغب في تعطير ملابسك؟",
+        "options": [
+            "نعم",
+            "لا"
+        ],
+        "womens_perfumed": [
+            {
+                "id": 1,
+                "Heading": "لولوة",
+                "description": "حيث يلتقي البريق بالعبير"
+            },
+            {
+                "id": 2,
+                "Heading": "صدف (نسائي)",
+                "description": "حضورك الفريد"
+            }
+        ],
+        "mens_perfumed": [
+            {
+                "id": 3,
+                "Heading": "مكنون",
+                "description": "سر جاذبيتك"
+            },
+            {
+                "id": 4,
+                "Heading": "ماد",
+                "description": "موجة من الحضور لا تغيب"
+            },
+            {
+                "id": 5,
+                "Heading": "صدف (رجالي)",
+                "description": "حضورك الفريد"
+            }
+        ],
+        "check_box": {
+            "check_heading": "أقر بأنه لا توجد حساسية لدي من العود ومكوناته.",
+            "check_description": "هذا الإقرار مطلوب لضمان سلامتكم"
+        }
+    }
+}
