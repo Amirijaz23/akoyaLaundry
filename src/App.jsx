@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BrowserRouter, createBrowserRouter, Outlet, Route, RouterProvider, Routes } from 'react-router-dom'
 import Navbar from './components/common/Navbar'
 import Home from './pages/Home'
@@ -28,14 +28,15 @@ const App = () => {
       once: true,
     });
   }, [])
+ 
   function AppsRouting() {
     return (
       <div>
-          <ScrollFromTop />
-          <ToastContainer />
-          <Navbar />
-          <Outlet />
-          <Footer />   
+        <ScrollFromTop />
+        <ToastContainer />
+        <Navbar />
+        <Outlet />
+        <Footer />
       </div>
     )
   }
@@ -48,38 +49,38 @@ const App = () => {
     )
   }
 
-const RoutingFuction = createBrowserRouter(
-  [
-    {
-      element: <AppsRouting />,
-      children: [
-        { path: "/", element: <Home /> },
-        { path: "/services", element: <Services /> },
-        { path: "/about", element: <About /> },
-        { path: "/vision", element: <Vision /> },
-        { path: "/contact", element: <Contact /> },
-        { path: "/book-now", element: <BookNow /> }
-      ]
-    },
-    {
-      element: <RegisterationRouting />,
-      children: [
-        { path: "/client-login", element: <ClientLogin /> },
-        { path: "/sign-up", element: <SignUp /> },
-        { path: "forget-password", element: <ForgetPassword /> }
-      ]
-    }
-  ]
-)
+  const RoutingFuction = createBrowserRouter(
+    [
+      {
+        element: <AppsRouting />,
+        children: [
+          { path: "/", element: <Home /> },
+          { path: "/services", element: <Services /> },
+          { path: "/about", element: <About /> },
+          { path: "/vision", element: <Vision /> },
+          { path: "/contact", element: <Contact /> },
+          { path: "/book-now", element: <BookNow /> }
+        ]
+      },
+      {
+        element: <RegisterationRouting />,
+        children: [
+          { path: "/client-login", element: <ClientLogin /> },
+          { path: "/sign-up", element: <SignUp /> },
+          { path: "forget-password", element: <ForgetPassword /> }
+        ]
+      }
+    ]
+  )
 
 
-return (
-  <div>
-    <GlobalData>
-      <ToastContainer />
-      <RouterProvider router={RoutingFuction} />
-    </GlobalData>
-  </div>
-)
+  return (
+    <div>
+      <GlobalData>
+        <ToastContainer />
+        <RouterProvider router={RoutingFuction} />
+      </GlobalData>
+    </div>
+  )
 }
 export default App
