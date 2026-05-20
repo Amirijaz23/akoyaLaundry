@@ -29,43 +29,36 @@ const Step2 = () => {
       setClothes(prev => [...prev, { "itemName": item.name, "itemPrice": item.price, "itemQuantity": 1, "totalPrice": item.price, "itemId": item.id }])
   }
   function languageChangeHandler() {
-    men_clothes.map((item) => {
-      clothes.map((list_item) => {
-        if (list_item.itemId === item.id) {
-          list_item.itemName = item.name
-        }
-      })
+    let updated = false
+    const updatedClothes = clothes.map((list_item) => {
+      const translatedItem = [...men_clothes, ...women_clothes, ...household_items].find((item) => item.id === list_item.itemId)
+      if (translatedItem && translatedItem.name !== list_item.itemName) {
+        updated = true
+        return { ...list_item, itemName: translatedItem.name }
+      }
+      return list_item
     })
-    women_clothes.map((item) => {
-      clothes.map((list_item) => {
-        if (list_item.itemId === item.id) {
-          list_item.itemName = item.name
-        }
-      })
-    })
-   household_items.map((item) => {
-      clothes.map((list_item) => {
-        if (list_item.itemId === item.id) {
-          list_item.itemName = item.name
-        }
-      })
-    })
-    setClothes(prev => [...prev])
+    if (updated) {
+      setClothes(updatedClothes)
+    }
   }
   useEffect(() => {
     if (profile.servicePage == 2) {
-      clothes.length >= 1 ? setProfile(prev => ({ ...prev, selectedOption: true })) : setProfile(prev => ({ ...prev, selectedOption: false }))
+      const shouldSelect = clothes.length >= 1
+      if (profile.selectedOption !== shouldSelect) {
+        setProfile(prev => ({ ...prev, selectedOption: shouldSelect }))
+      }
     }
     languageChangeHandler()
-  }, [profile.servicePage, clothes, profile.language])
+  }, [profile.servicePage, clothes.length, profile.language, profile.selectedOption])
   return (
 
     profile.servicePage == 2 &&
     < div >
-      <h1 className={`text-[20px] font-light ${profile.language=="eng"?"":"text-right"}`}>{translation.clothes_section.heading}</h1>
-      <div className={`grid grid-col-1 sm:grid-cols-2 gap-4 ${profile.language=="eng"?"":"[direction:rtl]"}`}>
+      <h1 className={`text-[20px] font-light ${profile.language == "eng" ? "" : "text-right"}`}>{translation.clothes_section.heading}</h1>
+      <div className={`grid grid-col-1 sm:grid-cols-2 gap-4 ${profile.language == "eng" ? "" : "[direction:rtl]"}`}>
         <div>
-          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language=="eng"?"Men's":"رجالي"}</h2>
+          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language == "eng" ? "Men's" : "رجالي"}</h2>
           {
             men_clothes.map((item, index) => (
               <div key={index} className='border border-gray-300 flex items-center justify-between p-4 rounded my-3 hover:border-yellow-400 hover:scale-[1.02] active:scale-[0.98]' onClick={() => HandlingClick(item, index)}>
@@ -79,7 +72,7 @@ const Step2 = () => {
           }
         </div>
         <div>
-          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language=="eng"?"Women's":"نسائي"}</h2>
+          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language == "eng" ? "Women's" : "نسائي"}</h2>
           {
             women_clothes.map((item, index) => (
               <div key={index} className='border border-gray-300 flex items-center justify-between p-4 rounded my-3 hover:border-yellow-400 hover:scale-[1.02] active:scale-[0.98]' onClick={() => HandlingClick(item)}>
@@ -94,7 +87,7 @@ const Step2 = () => {
         </div>
 
         <div>
-          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language=="eng"?"Household Items":"الأدوات المنزلية"}</h2>
+          <h2 className='text-[18px] font-medium system-font my-2'>{profile.language == "eng" ? "Household Items" : "الأدوات المنزلية"}</h2>
           {
             household_items.map((item, index) => (
               <div key={index} className='border border-gray-300 flex items-center justify-between p-4 rounded my-3 hover:border-yellow-400 hover:scale-[1.02] active:scale-[0.98]' onClick={() => HandlingClick(item)}>

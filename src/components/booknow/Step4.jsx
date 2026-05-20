@@ -16,24 +16,21 @@ const Step4 = () => {
     const womenPerfumes = translation.perfumed_section.womens_perfumed
     function HandlePerfumesSelection() {
         profile.Fragrance ?
-            setProfile(prev => ({ ...prev, Fragrance: false, selectedFragrance: null,FragranceId:null, selectedOption: perfumedClothes, selectedOption: true })) :
+            setProfile(prev => ({ ...prev, Fragrance: false, selectedFragrance: null, FragranceId: null, selectedOption: perfumedClothes, selectedOption: true })) :
             setProfile(prev => ({ ...prev, Fragrance: true, selectedOption: false }))
     }
     useEffect(() => {
-        womenPerfumes.map((item) => {
-            if (item.id == profile.FragranceId) {
-                setProfile(prev => ({ ...prev, selectedFragrance: item.Heading }))
+        if (profile.FragranceId) {
+            const allPerfumes = [...womenPerfumes, ...menPerfumes]
+            const selected = allPerfumes.find((item) => item.id == profile.FragranceId)
+            if (selected && profile.selectedFragrance !== selected.Heading) {
+                setProfile(prev => ({ ...prev, selectedFragrance: selected.Heading }))
             }
-        })
-        menPerfumes.map((item) => {
-            if (item.id == profile.FragranceId) {
-                setProfile(prev => ({ ...prev, selectedFragrance: item.Heading }))
-            }
-        })
-        if (profile.servicePage == 4) {
+        }
+        if (profile.servicePage == 4 && !profile.selectedOption) {
             setProfile(prev => ({ ...prev, selectedOption: true }))
         }
-    }, [profile.servicePage, profile.language])
+    }, [profile.servicePage, profile.language, profile.FragranceId, profile.selectedFragrance, profile.selectedOption])
     const PerfumedObjects = [
         {
             id: 1,
@@ -69,7 +66,7 @@ const Step4 = () => {
         profile.servicePage == 4 &&
         <div>
             <div className='pb-4'>
-                <h1 className={`text-[20px] font-light ${profile.language=="eng"?"":"text-right"}`}>{translation.perfumed_section.heading}</h1>
+                <h1 className={`text-[20px] font-light ${profile.language == "eng" ? "" : "text-right"}`}>{translation.perfumed_section.heading}</h1>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 my-4'>
                     <p className={`system-font font-medium border p-4 rounded text-center  hover:scale-105 transition-all duration-300 ease-in-out ${profile.Fragrance ? "border-yellow-400" : "border-gray-400"}`} onClick=
                         {() => HandlePerfumesSelection()} >{translation.perfumed_section.options[0]}</p>
@@ -103,7 +100,7 @@ const Step4 = () => {
                             <h1 className='text-[18px] font-bold'>{profile.language == "eng" ? "Men's" : "رجالي"}</h1>
                             {
                                 menPerfumes.map((item, index) => (
-                                    <div key={index} className={`border flex flex-col justify-center rounded-2xl my-4 text-center gap-2 p-4 ${profile.selectedFragrance == item.Heading ? "border-yellow-400" : "border-gray-400"} `} onClick={() => setProfile(prev => ({ ...prev, selectedFragrance: item.Heading ,FragranceId:item.id}))}>
+                                    <div key={index} className={`border flex flex-col justify-center rounded-2xl my-4 text-center gap-2 p-4 ${profile.selectedFragrance == item.Heading ? "border-yellow-400" : "border-gray-400"} `} onClick={() => setProfile(prev => ({ ...prev, selectedFragrance: item.Heading, FragranceId: item.id }))}>
                                         <img src={ImageGetter(item)} alt="" className='rounded-2xl' />
                                         <h1 className='text-[14px] font-semibold'>{item.Heading}</h1>
                                         <p className='text-[12px]'>{item.description}</p>
@@ -124,7 +121,7 @@ const Step4 = () => {
                 {
                     profile.Fragrance &&
 
-                    <div className={`flex items-center gap-3 border py-2 px-4  border-[#193cb8be] rounded bg-[#193cb80e] text-[#193cb8] ${profile.language=="eng"?"":"flex-row-reverse text-right"}`}>
+                    <div className={`flex items-center gap-3 border py-2 px-4  border-[#193cb8be] rounded bg-[#193cb80e] text-[#193cb8] ${profile.language == "eng" ? "" : "flex-row-reverse text-right"}`}>
                         <div>
                             <input type="checkbox" name="" id="" onChange={(e) => setProfile(prev => ({ ...prev, selectedOption: e.target.checked }))} />
                         </div>

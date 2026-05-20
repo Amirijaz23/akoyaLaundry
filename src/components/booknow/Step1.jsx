@@ -13,12 +13,17 @@ const Step1 = () => {
         const translation = profile.language == "eng" ? engTranlation : arbTranslation
         const current_item = translation.choose_section.ServiceTypes[serviceTypeSelection]
         if (current_item) {
-            setProfile(prev => ({ ...prev, serviceType: current_item.Icon + current_item.Heading, selectedOption: true }))
+            const newServiceType = current_item.Icon + current_item.Heading
+            if (profile.serviceType !== newServiceType || profile.selectedOption !== true) {
+                setProfile(prev => ({ ...prev, serviceType: newServiceType, selectedOption: true }))
+            }
+        } else if (profile.servicePage == 1) {
+            const shouldSelect = serviceTypeSelection !== null
+            if (profile.selectedOption !== shouldSelect) {
+                setProfile(prev => ({ ...prev, selectedOption: shouldSelect }))
+            }
         }
-        if (profile.servicePage == 1) {
-            serviceTypeSelection ? setProfile(prev => ({ ...prev, selectedOption: true })) : setProfile(prev => ({ ...prev, selectedOption: false }))
-        }
-    }, [profile.language,profile.servicePage])
+    }, [profile.language, profile.servicePage, serviceTypeSelection, profile.serviceType, profile.selectedOption])
 
     function HandleServiceSelection(item, index) {
         setServiceTypeSelection(index)
@@ -28,7 +33,7 @@ const Step1 = () => {
     return (
         profile.servicePage == 1 &&
         <div className='relative h-full'>
-            <h1 className={`text-[20px] font-light lg:px-6 ${profile.language=="eng"?"":"text-right"}`}>{translation.choose_section.heading}</h1>
+            <h1 className={`text-[20px] font-light lg:px-6 ${profile.language == "eng" ? "" : "text-right"}`}>{translation.choose_section.heading}</h1>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-6 px-0 md:px-6'>
                 {
                     translation.choose_section.ServiceTypes.map((item, index) => (

@@ -7,10 +7,10 @@ const Step3 = () => {
     const { profile, setProfile } = useContext(MyContext)
     const translation = profile.language == "eng" ? EngTranslation : ArbTranslation
     useEffect(() => {
-        if (profile.servicePage == 3) {
+        if (profile.servicePage == 3 && !profile.selectedOption) {
             setProfile(prev => ({ ...prev, selectedOption: true }))
         }
-    }, [profile.servicePage])
+    }, [profile.servicePage, profile.selectedOption])
     return (
         profile.servicePage == 3 &&
         <div>
@@ -28,7 +28,7 @@ const Step3 = () => {
             {
                 profile.Incense &&
                 <div >
-                    <div className={`flex flex-col ${profile.language=="eng"?"":"items-end"}`}>
+                    <div className={`flex flex-col ${profile.language == "eng" ? "" : "items-end"}`}>
                         <h1 className={`text-[20px] font-light ${profile.language == "eng" ? "" : "text-right"}`}>{translation.oud_section.OudObject.Choose_oud}</h1>
                         <div className={`h-70 w-70 border  rounded-2xl my-4 flex items-center flex-col p-2 gap-3  ${profile.Incense ? "border-yellow-400" : "border-gray-400"}`} onClick={() => setProfile(prev => ({ ...prev, Incense: true, selectedOption: false }))}>
                             <img src={Oud} alt="" className='h-[70%]  object-cover' />
