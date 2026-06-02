@@ -30,15 +30,47 @@ const App = () => {
       once: true,
     });
 
-    const finishLoading = () => setIsLoaded(true)
+    const waitForAllResources = async () => {
+      // Wait for window load event first
+      await new Promise(resolve => {
+        if (document.readyState === 'complete') {
+          resolve()
+        } else {
+          window.addEventListener('load', () => resolve())
+        }
+      })
 
-    if (document.readyState === 'complete') {
-      finishLoading()
-    } else {
-      window.addEventListener('load', finishLoading)
+      // Wait for all images and videos to load
+      const images = document.querySelectorAll('img')
+      const videos = document.querySelectorAll('video')
+
+      const imagePromises = Array.from(images).map(img => {
+        return new Promise(resolve => {
+          if (img.complete) {
+            resolve()
+          } else {
+            img.addEventListener('load', () => resolve())
+            img.addEventListener('error', () => resolve()) // Resolve even on error
+          }
+        })
+      })
+
+      const videoPromises = Array.from(videos).map(video => {
+        return new Promise(resolve => {
+          if (video.readyState >= 2) { // HAVE_CURRENT_DATA or more
+            resolve()
+          } else {
+            video.addEventListener('canplay', () => resolve())
+            video.addEventListener('error', () => resolve()) // Resolve even on error
+          }
+        })
+      })
+
+      await Promise.all([...imagePromises, ...videoPromises])
+      setIsLoaded(true)
     }
 
-    return () => window.removeEventListener('load', finishLoading)
+    waitForAllResources()
   }, [])
 
   if (!isLoaded) {
