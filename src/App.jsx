@@ -19,6 +19,8 @@ import SignUp from './components/registeration/SignUpForm'
 import ForgetPassword from './components/registeration/ForgetPassword'
 
 const App = () => {
+  const [isLoaded, setIsLoaded] = useState(false)
+
   useEffect(() => {
     AOS.init({
       offset: 200,
@@ -27,8 +29,27 @@ const App = () => {
       delay: 300,
       once: true,
     });
+
+    const finishLoading = () => setIsLoaded(true)
+
+    if (document.readyState === 'complete') {
+      finishLoading()
+    } else {
+      window.addEventListener('load', finishLoading)
+    }
+
+    return () => window.removeEventListener('load', finishLoading)
   }, [])
- 
+
+  if (!isLoaded) {
+    return (
+      <div className="app-loader">
+        <div className="loader-ring" />
+        <p>Loading...</p>
+      </div>
+    )
+  }
+
   function AppsRouting() {
     return (
       <div>
